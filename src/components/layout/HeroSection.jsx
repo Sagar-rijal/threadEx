@@ -2,7 +2,7 @@ import React from "react";
 
 function HeroSection({ video }) {
   return (
-    <section className="relative w-full h-56 md:h-72 lg:h-170 overflow-hidden mb-6 rounded-none ">
+    <section className="relative w-full h-56 md:h-72 lg:h-162 overflow-hidden mb-6 rounded-none">
       {/* Background video */}
       <video
         className="absolute inset-0 w-full h-full object-cover"
@@ -14,7 +14,7 @@ function HeroSection({ video }) {
       />
 
       {/* Dark overlay */}
-      <div className="" />
+     
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-center px-4 md:px-8 text-white">
