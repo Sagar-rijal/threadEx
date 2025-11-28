@@ -6,13 +6,12 @@ import { selectCartCount } from "../../feature/cart/cartSlice.js";
 
 function Navbar() {
   const { searchText, setSearchText } = useSearch();
-  
- const cartCount =useSelector(selectCartCount);
+  const cartCount = useSelector(selectCartCount);
 
   return (
-    <header className="relative flex items-center justify-between px-6 py-4 bg-slate-900 text-white">
+    <header className="relative flex items-center justify-between px-6 py-7 bg-slate-900 text-white">
       {/* LEFT: Men / Women / Sale */}
-      <nav className="flex items-center gap-4 text-sm">
+      <nav className="flex items-center gap-4 text-base">
         <Link to="/shop?category=men" className="hover:text-slate-300">
           Men
         </Link>
@@ -39,9 +38,9 @@ function Navbar() {
       </div>
 
       {/* RIGHT: Search + Login + Profile + Cart */}
-      <div className="flex items-center gap-3 text-sm">
+      <div className="flex items-center gap-3 text-base">
         {/* Search bar */}
-        <div className="hidden md:flex items-center bg-slate-800 rounded-full px-3 py-1">
+        <div className="hidden md:flex items-center bg-slate-800 rounded-full px-3 py-1.5">
           <input
             type="text"
             placeholder="Search"
@@ -53,21 +52,21 @@ function Navbar() {
 
         <Link
           to="/login"
-          className="px-3 py-1 rounded-full border border-slate-500 hover:bg-slate-800 transition-colors"
+          className="px-3 py-1.5 rounded-full border border-slate-500 hover:bg-slate-800 transition-colors"
         >
           Login
         </Link>
 
         <Link
           to="/profile"
-          className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-700 hover:bg-slate-600 text-xs font-semibold"
+          className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-700 hover:bg-slate-600 text-xs font-semibold"
         >
           P
         </Link>
 
         <Link
           to="/cart"
-          className="relative flex items-center justify-center h-8 w-8 rounded-full bg-slate-700 hover:bg-slate-600"
+          className="relative flex items-center justify-center h-9 w-9 rounded-full bg-slate-700 hover:bg-slate-600"
         >
           <span className="text-lg leading-none">🛒</span>
           {cartCount > 0 && (
