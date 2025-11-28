@@ -1,14 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSearch } from "../../context/SearchContext.jsx";
+import { useSelector } from "react-redux";
+import { selectCartCount } from "../../feature/cart/cartSlice.js";
 
 function Navbar() {
   const { searchText, setSearchText } = useSearch();
+  
+ const cartCount =useSelector(selectCartCount);
 
   return (
-    <header className="relative flex items-center justify-between px-6 py-7 bg-black text-slate-50">
+    <header className="relative flex items-center justify-between px-6 py-4 bg-slate-900 text-white">
       {/* LEFT: Men / Women / Sale */}
-      <nav className="flex items-center gap-5 text-base">
+      <nav className="flex items-center gap-4 text-sm">
         <Link to="/shop?category=men" className="hover:text-slate-300">
           Men
         </Link>
@@ -35,40 +39,44 @@ function Navbar() {
       </div>
 
       {/* RIGHT: Search + Login + Profile + Cart */}
-      <div className="flex items-center gap-4 text-base">
-        <div className="hidden md:flex items-center bg-slate-800 rounded-full px-3 py-1.5">
+      <div className="flex items-center gap-3 text-sm">
+        {/* Search bar */}
+        <div className="hidden md:flex items-center bg-slate-800 rounded-full px-3 py-1">
           <input
             type="text"
             placeholder="Search"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            className="bg-transparent text-sm outline-none placeholder:text-slate-400 text-slate-100"
+            className="bg-transparent text-xs outline-none placeholder:text-slate-400 text-slate-100"
           />
         </div>
 
         <Link
           to="/login"
-          className="px-4 py-1.5 rounded-full border border-slate-500 hover:bg-slate-800 transition-colors text-sm"
+          className="px-3 py-1 rounded-full border border-slate-500 hover:bg-slate-800 transition-colors"
         >
           Login
         </Link>
 
         <Link
           to="/profile"
-          className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-700 hover:bg-slate-600 text-sm font-semibold"
+          className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-700 hover:bg-slate-600 text-xs font-semibold"
         >
           P
         </Link>
 
         <Link
           to="/cart"
-          className="relative flex items-center justify-center h-9 w-9 rounded-full bg-slate-700 hover:bg-slate-600"
+          className="relative flex items-center justify-center h-8 w-8 rounded-full bg-slate-700 hover:bg-slate-600"
         >
-          <span className="text-xl leading-none">🛒</span>
+          <span className="text-lg leading-none">🛒</span>
+          {cartCount > 0 && (
+            <span className="absolute -top-1 -right-1 min-w-[16px] h-4 px-1 rounded-full bg-red-500 text-[10px] leading-4 text-white text-center">
+              {cartCount}
+            </span>
+          )}
         </Link>
       </div>
-
-     
     </header>
   );
 }
