@@ -7,6 +7,8 @@ function CartPage() {
   const items = useSelector(selectCartItems);
   const cartCount = useSelector(selectCartCount);
 
+  console.log("Cart items from Redux:", items);
+
   const total = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0

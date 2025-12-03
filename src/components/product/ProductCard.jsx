@@ -15,7 +15,7 @@ function ProductCard({ product }) {
   const quantity = cartItem?.quantity ?? 0;
 
   function handleAddToCart(e) {
-    e.preventDefault(); // don't navigate when clicking in card
+    e.preventDefault();
     dispatch(addToCart(product));
   }
 

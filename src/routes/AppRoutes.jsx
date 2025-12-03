@@ -1,20 +1,17 @@
-import React from 'react'
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home.jsx";
-import Shop from "../pages/Shop.jsx";
-import ProductPage from "../pages/ProductPage.jsx";
-import Cart from "../pages/Cart.jsx";
+import CartPage from "../pages/CartPage.jsx";
+import ProductDetailPage from "../pages/ProductDetailPage.jsx";
 
-const AppRoutes = () => {
+function AppRoutes() {
   return (
-   <Routes>
-
-    <Route path="/" element={<Home />} />
-    <Route path="/" element={<Shop />} />
-    <Route path="/" element={<ProductPage />} />
-    <Route path="/" element={<Cart />} />
-   </Routes>
-  )
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/cart" element={<CartPage />} />
+      <Route path="/product/:id" element={<ProductDetailPage />} />
+    </Routes>
+  );
 }
 
-export default AppRoutes
+export default AppRoutes;
